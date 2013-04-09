@@ -664,4 +664,28 @@ public class StringUtil {
     public static String valueOf(Object obj) {
         return obj == null ? null : String.valueOf(obj);
     }
+
+    /**
+     * 比较字符串是否相等，忽略大小写
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    public static boolean equalsIgnoreCase(String a, String b) {
+        return (a == b) || (a != null && a.equalsIgnoreCase(b));
+    }
+
+    public static void main(String[] args) {
+        System.out.println(null == null);
+
+        String a = "xx";
+        String b = "XX";
+        System.out.println(equalsIgnoreCase(a, b));
+        a = null;
+        System.out.println(equalsIgnoreCase(a, b));
+        a = "xx";
+        b = null;
+        System.out.println(equalsIgnoreCase(a, b));
+    }
 }

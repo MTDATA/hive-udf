@@ -4,7 +4,7 @@
     <groupId>com.sankuai</groupId>
     <artifactId>hive-udf</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>hive-udf</name>
     <url>http://maven.apache.org</url>
 
@@ -22,6 +22,7 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.8.0</version>
         </dependency>
+
         <!-- Hive -->
         <dependency>
             <groupId>org.apache.hive</groupId>
@@ -148,5 +149,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>local-nexus-releases</id>
+            <name>Nexus Releases Repository</name>
+            <url>http://localhost:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>local-nexus-snapshots</id>
+            <name>Nexus Snapshots Repository</name>
+            <url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+
+    </distributionManagement>
 
 </project>

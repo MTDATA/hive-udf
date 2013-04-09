@@ -1,0 +1,14 @@
+<ivy-module version="2.0">
+    <info organisation="com.sankuai.meituan" module="${ant.project.name}"/>
+    <dependencies>
+        <dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="1.8.0"/>
+        <dependency org="org.apache.hive" name="hive-serde" rev="${apache.hive.version}"/>
+        <dependency org="org.apache.hive" name="hive-common" rev="${apache.hive.version}"/>
+        <dependency org="org.apache.hive" name="hive-exec" rev="${apache.hive.version}"/>
+        <dependency org="org.apache.hive" name="hive-cli" rev="${apache.hive.version}" />
+        <dependency org="org.apache.hadoop" name="hadoop-core" rev="${apache.hadoop.version}"/>
+        <dependency org="org.apache.hadoop" name="hadoop-test" rev="${apache.hadoop.version}" />
+        <dependency org="javax.jdo" name="jdo2-api" rev="2.3-eb" />
+        <dependency org="junit" name="junit" rev="4.8"/>
+    </dependencies>
+</ivy-module>

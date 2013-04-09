@@ -1,0 +1,43 @@
+<project name="hive-udf" default="dist" basedir="."
+         xmlns:ivy="antlib:org.apache.ivy.ant">
+    <description>
+        hive-udf
+    </description>
+
+    <property name="src" location="src/main/java"/>
+    <property name="build.dir" location="build"/>
+    <property name="dist.dir"  location="dist"/>
+    <property name="lib.dir"  location="lib"/>
+    <loadproperties srcfile="libraries.properties"/>
+
+    <path id="lib.path">
+        <fileset dir="${lib.dir}">
+        </fileset>
+    </path>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.dir}/classes"/>
+    </target>
+
+    <target name="compile" depends="init"
+            description="compile the source " >
+        <ivy:retrieve />
+        <javac encoding="utf-8" srcdir="${src}" destdir="${build.dir}/classes" classpathref="lib.path"/>
+    </target>
+
+    <target name="dist" depends="compile"
+            description="generate the distribution" >
+        <mkdir dir="${dist.dir}/lib"/>
+        <jar jarfile="${dist.dir}/lib/${ant.project.name}.jar" basedir="${build.dir}" />
+    </target>
+
+    <target name="clean"
+            description="clean up" >
+        <delete dir="${lib.dir}"/>
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+</project>
