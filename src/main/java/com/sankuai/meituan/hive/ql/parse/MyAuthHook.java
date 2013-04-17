@@ -21,8 +21,6 @@ public class MyAuthHook extends AbstractSemanticAnalyzerHook {
 
     @Override
     public ASTNode preAnalyze(HiveSemanticAnalyzerHookContext context, ASTNode ast) throws SemanticException {
-//        System.out.println("command=" + ast.getToken().getText());
-//        System.out.println(ast.toStringTree());
         switch (ast.getToken().getType()) {
             case HiveParser.TOK_CREATEDATABASE:
             case HiveParser.TOK_DROPDATABASE:
