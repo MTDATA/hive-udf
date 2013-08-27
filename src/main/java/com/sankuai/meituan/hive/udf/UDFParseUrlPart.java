@@ -1,6 +1,8 @@
 package com.sankuai.meituan.hive.udf;
 
+import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDF;
+import org.apache.hadoop.hive.ql.udf.UDFParseUrl;
 
 import java.net.URL;
 
@@ -14,7 +16,24 @@ import java.net.URL;
  * @version 1.0
  * @created 2013-08-19
  */
-public class UDFParseUrlPart extends UDF {
+@Description(name = "parse_url",
+        value = "_FUNC_(url, partToExtract[, key]) - extracts a part from a URL",
+        extended = "Parts: HOST, PATH, QUERY, REF, PROTOCOL, AUTHORITY, FILE, "
+                + "USERINFO\nkey specifies which query to extract\n"
+                + "Example:\n"
+                + "  > SELECT _FUNC_('http://facebook.com/path/p1.php?query=1', "
+                + "'HOST') FROM src LIMIT 1;\n"
+                + "  'facebook.com'\n"
+                + "  > SELECT _FUNC_('http://facebook.com/path/p1.php?query=1', "
+                + "'PATH'), _FUNC_('http://facebook.com/path/p1.php?query=1', "
+                + "'PATH', 2) FROM src LIMIT 1;\n"
+                + "/path/p1.php  'p1.php'\n"
+                + "  > SELECT _FUNC_('http://facebook.com/path/p1.php?query=1', "
+                + "'QUERY') FROM src LIMIT 1;\n"
+                + "  'query=1'\n"
+                + "  > SELECT _FUNC_('http://facebook.com/path/p1.php?query=1', "
+                + "'QUERY', 'query') FROM src LIMIT 1;\n" + "  '1'")
+public class UDFParseUrlPart extends UDFParseUrl {
     public String evaluate(String urlStr, String partToExtract, int partIndex) {
         URL url = null;
         if (urlStr == null || partToExtract == null) {
