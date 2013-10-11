@@ -33,8 +33,13 @@ public class URLDecode extends UDF {
     public static String evaluate(final String key, final String enc) {
         try {
             return URLDecoder.decode(key, enc);
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             return "";
         }
     }
+
+    public static void main(String args[]) {
+        System.out.println(evaluate("%e9%98%bf%e9%87%8c%e9%83%8e%e7%83%a4%"));
+    }
+
 }
