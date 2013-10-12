@@ -1,6 +1,5 @@
 package com.sankuai.meituan.hive.udf;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 import org.apache.hadoop.hive.ql.exec.UDF;
@@ -34,12 +33,9 @@ public class URLDecode extends UDF {
         try {
             return URLDecoder.decode(key, enc);
         } catch (Exception e) {
+            e.printStackTrace();
             return "";
         }
-    }
-
-    public static void main(String args[]) {
-        System.out.println(evaluate("%e9%98%bf%e9%87%8c%e9%83%8e%e7%83%a4%"));
     }
 
 }
