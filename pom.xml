@@ -4,7 +4,7 @@
     <groupId>com.sankuai</groupId>
     <artifactId>hive-udf</artifactId>
     <packaging>jar</packaging>
-    <version>1.0</version>
+    <version>1.1</version>
     <name>hive-udf</name>
     <url>http://maven.apache.org</url>
 
@@ -12,7 +12,7 @@
         <java-version>1.6</java-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <apache.hadoop.version>1.0.1</apache.hadoop.version>
-        <apache.hive.version>0.10.0</apache.hive.version>
+        <apache.hive.version>0.11.0</apache.hive.version>
     </properties>
 
     <dependencies>
@@ -38,6 +38,7 @@
         </dependency>
 
         <dependency>
+
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-exec</artifactId>
             <version>${apache.hive.version}</version>
@@ -73,7 +74,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8</version>
+            <version>4.10</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -69,7 +69,7 @@ public class AccSum extends GenericUDF {
         Object hash = arguments[0].get(), value = arguments[1].get();
         ObjectInspectorConverters.Converter converter = ObjectInspectorConverters.getConverter(valueOI, resultOI);
         if (ObjectInspectorUtils.compare(prevHash, prevHashStandardOI, hash, hashOI) == 0) {
-            if (resultOI.getTypeName() == serdeConstants.DOUBLE_TYPE_NAME) {
+            if (serdeConstants.DOUBLE_TYPE_NAME.equals(resultOI.getTypeName())) {
                 DoubleWritable valueW = (DoubleWritable) converter.convert(value);
                 doubleResult.set(doubleResult.get() + valueW.get());
                 return doubleResult;
@@ -80,7 +80,7 @@ public class AccSum extends GenericUDF {
             }
         } else {
             prevHash = ObjectInspectorUtils.copyToStandardObject(hash, hashOI, ObjectInspectorUtils.ObjectInspectorCopyOption.JAVA);
-            if (resultOI.getTypeName() == serdeConstants.DOUBLE_TYPE_NAME) {
+            if (serdeConstants.DOUBLE_TYPE_NAME.equals(resultOI.getTypeName())) {
                 doubleResult.set(((DoubleWritable) converter.convert(value)).get());
                 return doubleResult;
             } else {
