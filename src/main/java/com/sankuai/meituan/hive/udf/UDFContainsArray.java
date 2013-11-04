@@ -2,7 +2,6 @@ package com.sankuai.meituan.hive.udf;
 
 import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDF;
-import org.junit.Assert;
 
 /**
  * udf contains_arr
